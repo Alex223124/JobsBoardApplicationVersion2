@@ -34,12 +34,14 @@ class JobsController < ApplicationController
   end
   
   def destroy
+    @job.destroy
+    redirect_to root_path
   end
   
   private
   
   def jobs_params
-    params.require(:job).permit(:title, :description, :company, :url)
+    params.require(:job).permit(:title, :description, :company, :url, :category_id)
   end
   
   def find_job
